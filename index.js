@@ -2,6 +2,8 @@ const express = require("express");
 const cors = require("cors");
 const photosRoutes = require("./src/routes/photoRoutes");
 
+require("dotenv").config();
+
 const app = express();
 
 app.use(express.json());
@@ -12,7 +14,7 @@ app.use(
 );
 app.use("/photos", photosRoutes);
 
-const port = 3000;
+const port = process.env.PORT;
 
 app.get("/", (req, res) => {
   res.status(200).json({ message: "API online 😎" });

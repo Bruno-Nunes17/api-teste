@@ -1,3 +1,6 @@
+const fs = require("fs");
+const Photos = require("../models/PhotoModel")
+
 exports.create = (req, res) => {
   res.status(200).json({ message: "rota create" });
 };
