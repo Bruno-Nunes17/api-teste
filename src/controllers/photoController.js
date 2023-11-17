@@ -1,5 +1,5 @@
 const fs = require("fs");
-const Photos = require("../models/PhotoModel")
+const Photos = require("../models/PhotoModel");
 
 exports.create = async (req, res) => {
   try {
