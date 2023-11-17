@@ -25,11 +25,11 @@ exports.getAll = async (req, res) => {
     const photos = await Photos.find();
     res.status(200).json({ photos });
   } catch (error) {
+    console.log(error);
     res.status(500).json({ message: "Erro ao salvar imagem." });
   }
 };
 exports.remove = async (req, res) => {
-  console.log("executei");
   try {
     const photos = await Photos.findById(req.params.id);
     if (!photos) {
@@ -39,6 +39,7 @@ exports.remove = async (req, res) => {
     await Photos.findByIdAndDelete(photos._id);
     return res.status(200).json({ message: "Imagen removida com sucesso" });
   } catch (error) {
+    console.log(error);
     console.log(error);
     return res.status(500).json({ message: "Erro ao excluir imagem." });
   }
