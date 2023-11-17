@@ -22,7 +22,7 @@ exports.create = async (req, res) => {
 };
 exports.getAll = async (req, res) => {
   try {
-    const photos = await Photo.find();
+    const photos = await Photos.find();
     res.status(200).json({ photos });
   } catch (error) {
     res.status(500).json({ message: "Erro ao salvar imagem." });
