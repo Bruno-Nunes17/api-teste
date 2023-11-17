@@ -29,5 +29,17 @@ exports.getAll = async (req, res) => {
   }
 };
 exports.remove = async (req, res) => {
-  res.status(200).json({ message: "rota remove" });
+  console.log("executei");
+  try {
+    const photos = await Photos.findById(req.params.id);
+    if (!photos) {
+      return res.status(404).json({ message: "Imagen não econtrada" });
+    }
+    fs.unlinkSync(photos.src);
+    await Photos.findByIdAndDelete(photos._id);
+    return res.status(200).json({ message: "Imagen removida com sucesso" });
+  } catch (error) {
+    console.log(error);
+    return res.status(500).json({ message: "Erro ao excluir imagem." });
+  }
 };
